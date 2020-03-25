@@ -76,8 +76,6 @@ class LoginViewModel: ObservableObject {
     .eraseToAnyPublisher()
     }
     
-    
-    
     private var isFormValidPublisher: AnyPublisher<Bool, Never> {
         Publishers.CombineLatest(isUsernameValidPublisher, isPasswordValidPublisher)
             .map { userNameIsValid, passwordIsValid in
@@ -111,23 +109,6 @@ class LoginViewModel: ObservableObject {
         .assign(to: \.userPasswordMessage, on: self)
         .store(in: &cancellableSet)
         
-//        isPasswordEmptyPublisher
-//            .receive(on: RunLoop.main)
-//            .map { valid in
-//                valid ? "Password is empty" : ""
-//        }
-//        .assign(to: \.userPasswordMessage, on: self)
-//        .store(in: &cancellableSet)
-//
-//        isPasswordsEqualPublisher
-//            .receive(on: RunLoop.main)
-//            .map { valid in
-//                valid ? "" : "Password don't match"
-//
-//        }
-//        .assign(to: \.userPasswordMessage, on: self)
-//        .store(in: &cancellableSet)
-//
         isFormValidPublisher
             .receive(on: RunLoop.main)
             .assign(to: \.isOk, on: self)

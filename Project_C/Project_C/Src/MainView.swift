@@ -33,7 +33,6 @@ struct MainView: View {
                 }) {
                     Text("Sign Up")
                 }
-//                .disabled(!loginViewModel.isOk)
             }
         }
         .sheet(isPresented: $presentAlert) {
@@ -60,8 +59,6 @@ struct WelcomeView: View {
         } else {
             return Text("Welcome! Great to have you on board!")
         }
-        
-        
   }
 }
 
@@ -85,8 +82,4 @@ struct UserPasswordError: View {
 
 
 
-struct MainView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView()
-    }
-}
+
